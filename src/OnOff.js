@@ -8,8 +8,12 @@ class OnOff extends Component {
 	render() {
 		return (
 			<div>
+				<button onClick={this.handleClick}>Turn {this.state.on ? 'off' : 'on'}</button>
 			</div>
 		);
+	}
+	handleClick = event => {
+		this.setState({ on: !this.state.on });
 	}
 }
 

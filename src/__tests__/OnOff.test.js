@@ -17,14 +17,24 @@ describe('OnOff component test suite', () => {
 		let wrapper = shallow(<OnOff />);
 	})
 
-	// initial state == false
 	test('initial state should be false', () => {
 		let wrapper = shallow(<OnOff />);
 		expect( wrapper.state('on') ).toBe( false );
 	})
 
-	// state ändras från false till true när man klickar
-	// state ändras från true till false när man klickar
+	test('state from false to true when clicked', () => {
+		let wrapper = shallow(<OnOff />);
+		let button = wrapper.find('button').at(0);
+		button.simulate('click');
+		expect( wrapper.state('on') ).toBe( true );
+	})
+	test('state from true to false when clicked', () => {
+		let wrapper = shallow(<OnOff />);
+		wrapper.setState({ on: true });
+		let button = wrapper.find('button').at(0);
+		button.simulate('click');
+		expect( wrapper.state('on') ).toBe( false );
+	})
 
 
 })
